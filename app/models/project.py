@@ -3,12 +3,13 @@ from datetime import datetime
 from sqlalchemy import DateTime, String, Text, func, CheckConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
 
+from constants.project import NAME_MAX_LEN
 from models import Base
 from models.mixins.id_int_pk import IdIntPkMixin
 
 
 class Project(IdIntPkMixin, Base):
-    name: Mapped[str] = mapped_column(String(100), nullable=False)
+    name: Mapped[str] = mapped_column(String(NAME_MAX_LEN), nullable=False)
     description: Mapped[str | None] = mapped_column(Text)
     start_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), server_default=func.now())
     end_date: Mapped[datetime | None] = mapped_column(DateTime)
