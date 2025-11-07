@@ -38,6 +38,7 @@ class Team(IdIntPkMixin, Base):
     project_id: Mapped[int | None] = mapped_column(ForeignKey("projects.id", ondelete="SET NULL"))
     teamlead_id: Mapped[int | None] = mapped_column(ForeignKey("employees.id", ondelete="SET NULL"))
 
+    project: Mapped["Project"] = relationship("Project", back_populates="teams")
     members: Mapped[list["EmployeeTeam"]] = relationship("EmployeeTeam", back_populates="team")
 
 
