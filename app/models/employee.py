@@ -1,28 +1,12 @@
-import enum
 from datetime import datetime
 from decimal import Decimal
 
 from sqlalchemy import DECIMAL, DateTime, String, ForeignKey, func, CheckConstraint, Enum, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
 
+from constants.employee import GradeEnum, PositionEnum
 from models import Person, Base
 from models.mixins.id_int_pk import IdIntPkMixin
-
-
-class GradeEnum(str, enum.Enum):
-    Junior = "Junior"
-    Middle = "Middle"
-    Senior = "Senior"
-    Lead = "Lead"
-
-
-class PositionEnum(str, enum.Enum):
-    Frontend = "Frontend Developer"
-    Backend = "Backend Developer"
-    Fullstack = "Fullstack Developer"
-    Designer = "Designer"
-    QA = "QA Engineer"
-    PM = "Project Manager"
 
 
 class Employee(IdIntPkMixin, Person):
