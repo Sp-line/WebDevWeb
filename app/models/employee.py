@@ -5,6 +5,7 @@ from sqlalchemy import DECIMAL, DateTime, String, ForeignKey, func, CheckConstra
 from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
 
 from constants.employee import GradeEnum, PositionEnum
+from constants.team import NAME_MAX_LEN
 from models import Person, Base
 from models.mixins.id_int_pk import IdIntPkMixin
 
@@ -33,7 +34,7 @@ class Employee(IdIntPkMixin, Person):
 
 
 class Team(IdIntPkMixin, Base):
-    name: Mapped[str] = mapped_column(String(100), nullable=False)
+    name: Mapped[str] = mapped_column(String(NAME_MAX_LEN), nullable=False)
     project_id: Mapped[int | None] = mapped_column(ForeignKey("projects.id", ondelete="SET NULL"))
     teamlead_id: Mapped[int | None] = mapped_column(ForeignKey("employees.id", ondelete="SET NULL"))
 
