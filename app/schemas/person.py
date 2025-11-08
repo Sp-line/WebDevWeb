@@ -4,12 +4,12 @@ from constants.person import EMAIL_MAX_LEN, FIRST_NAME_MIN_LEN, FIRST_NAME_MAX_L
 
 
 class PersonBase(BaseModel):
-    firstName: str = Field(
+    first_name: str = Field(
         ...,
         min_length=FIRST_NAME_MIN_LEN,
         max_length=FIRST_NAME_MAX_LEN,
     )
-    lastName: str = Field(
+    last_name: str = Field(
         ...,
         min_length=LAST_NAME_MIN_LEN,
         max_length=LAST_NAME_MAX_LEN,
