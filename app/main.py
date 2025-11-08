@@ -4,6 +4,7 @@ from typing import AsyncIterator
 import uvicorn
 from fastapi import FastAPI
 
+from admin.core import init_admin
 from app.database import database
 from config import settings
 from routes import router as api_router
@@ -20,6 +21,9 @@ main_app = FastAPI(
     default_response_class=ORJSONResponse,
     lifespan=lifespan,
 )
+
+init_admin(main_app, database.engine)
+
 main_app.include_router(
     api_router,
     prefix=settings.api.prefix,
