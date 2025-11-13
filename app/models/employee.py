@@ -25,7 +25,11 @@ class Employee(IdIntPkMixin, Person):
     grade: Mapped[GradeEnum] = mapped_column(Enum(GradeEnum), nullable=False)
     position: Mapped[PositionEnum] = mapped_column(Enum(PositionEnum), nullable=False)
 
-    teams: Mapped[list["EmployeeTeam"]] = relationship("EmployeeTeam", back_populates="employee")
+    teams: Mapped[list["EmployeeTeam"]] = relationship(
+        "EmployeeTeam",
+        back_populates="employee",
+        cascade="all, delete-orphan",
+    )
 
     lead_team: Mapped["Team"] = relationship(
         "Team",
@@ -51,7 +55,11 @@ class Team(IdIntPkMixin, Base):
     teamlead_id: Mapped[int | None] = mapped_column(ForeignKey("employees.id", ondelete="SET NULL"), unique=True)
 
     project: Mapped["Project"] = relationship("Project", back_populates="teams")
-    members: Mapped[list["EmployeeTeam"]] = relationship("EmployeeTeam", back_populates="team")
+    members: Mapped[list["EmployeeTeam"]] = relationship(
+        "EmployeeTeam",
+        back_populates="team",
+        cascade="all, delete-orphan",
+    )
     teamlead: Mapped["Employee"] = relationship(
         "Employee",
         back_populates="lead_team",
