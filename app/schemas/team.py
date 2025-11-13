@@ -4,13 +4,16 @@ from constants.team import NAME_MAX_LEN
 from schemas.common import ProjectShort, PersonShort
 
 
-class TeamBase(BaseModel):
+class TeamRelation(BaseModel):
+    project_id: int | None = Field(None, gt=0)
+    teamlead_id: int | None = Field(None, gt=0)
+
+
+class TeamBase(TeamRelation):
     name: str = Field(
         ...,
         max_length=NAME_MAX_LEN,
     )
-    project_id: int | None = Field(None, gt=0)
-    teamlead_id: int | None = Field(None, gt=0)
 
 
 class TeamCreate(TeamBase):
@@ -35,11 +38,9 @@ class TeamResponseBase(BaseModel):
     teamlead: PersonShort | None
 
 
-class TeamCreateUpdateResponse(BaseModel):
+class TeamCreateUpdateResponse(TeamRelation):
     id: int
     name: str
-    project_id: int | None
-    teamlead_id: int | None
 
     model_config = ConfigDict(from_attributes=True)
 
