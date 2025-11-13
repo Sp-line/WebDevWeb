@@ -1,4 +1,6 @@
+from __future__ import annotations
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 from sqlalchemy import ForeignKey, DECIMAL, DateTime, func, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
@@ -6,6 +8,10 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
 from constants.order import TECHNICAL_TASK_MAX_LEN
 from models import Base
 from models.mixins.id_int_pk import IdIntPkMixin
+
+if TYPE_CHECKING:
+    from .client import Client
+    from .project import Project
 
 
 class Order(IdIntPkMixin, Base):
