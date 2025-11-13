@@ -41,7 +41,7 @@ class Employee(IdIntPkMixin, Person):
 class Team(IdIntPkMixin, Base):
     name: Mapped[str] = mapped_column(String(NAME_MAX_LEN), nullable=False)
     project_id: Mapped[int | None] = mapped_column(ForeignKey("projects.id", ondelete="SET NULL"))
-    teamlead_id: Mapped[int | None] = mapped_column(ForeignKey("employees.id", ondelete="SET NULL"))
+    teamlead_id: Mapped[int | None] = mapped_column(ForeignKey("employees.id", ondelete="SET NULL"), unique=True)
 
     project: Mapped["Project"] = relationship("Project", back_populates="teams")
     members: Mapped[list["EmployeeTeam"]] = relationship("EmployeeTeam", back_populates="team")
