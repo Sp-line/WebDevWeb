@@ -33,11 +33,18 @@ class TeamResponseBase(BaseModel):
     teamlead: PersonShort | None
 
 
-class TeamListResponse(TeamResponseBase):
+class TeamResponse(TeamResponseBase):
+    pass
+
+
+class TeamListResponse(BaseModel):
+    teams: list[TeamResponse]
+    total: int
+
     model_config = ConfigDict(from_attributes=True)
 
 
-class TeamResponse(TeamResponseBase):
+class TeamDetailResponse(TeamResponseBase):
     members: list[EmployeeTeamMember] = []
 
     model_config = ConfigDict(from_attributes=True)
