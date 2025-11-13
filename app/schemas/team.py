@@ -1,11 +1,13 @@
 from pydantic import BaseModel, Field, ConfigDict
 
+from constants.team import NAME_MAX_LEN
 from schemas.common import ProjectShort, PersonShort
 
 
 class TeamBase(BaseModel):
     name: str = Field(
         ...,
+        max_length=NAME_MAX_LEN,
     )
     project_id: int | None = Field(None)
     teamlead_id: int | None = Field(None)
