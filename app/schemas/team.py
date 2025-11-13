@@ -35,6 +35,15 @@ class TeamResponseBase(BaseModel):
     teamlead: PersonShort | None
 
 
+class TeamCreateUpdateResponse(BaseModel):
+    id: int
+    name: str
+    project_id: int | None
+    teamlead_id: int | None
+
+    model_config = ConfigDict(from_attributes=True)
+
+
 class TeamResponse(TeamResponseBase):
     pass
 
