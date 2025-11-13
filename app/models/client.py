@@ -13,3 +13,6 @@ if TYPE_CHECKING:
 
 class Client(IdIntPkMixin, Person):
     orders: Mapped[list["Order"]] = relationship("Order", back_populates="client")
+
+    def __str__(self) -> str:
+        return f"<Client: {self.email}>"
