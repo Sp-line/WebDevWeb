@@ -1,9 +1,10 @@
 from datetime import datetime
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 from pydantic_core.core_schema import FieldValidationInfo
 
 from constants.project import NAME_MAX_LEN, NAME_MIN_LEN
+from schemas.common import OrderShort, TeamShort
 from utils.utc_now import utc_now
 
 
@@ -35,3 +36,22 @@ class ProjectUpdate(ProjectBase):
         min_length=NAME_MIN_LEN,
         max_length=NAME_MAX_LEN,
     )
+
+
+class ProjectResponseBase(BaseModel):
+    id: int
+    name: str
+    start_date: datetime | None
+    end_date: datetime | None
+
+
+class ProjectListResponse(ProjectResponseBase):
+    model_config = ConfigDict(from_attributes=True)
+
+
+class ProjectResponse(ProjectResponseBase):
+    description: str | None
+    order: OrderShort | None
+    teams: list[TeamShort] = []
+
+    model_config = ConfigDict(from_attributes=True)
