@@ -27,6 +27,13 @@ class Employee(IdIntPkMixin, Person):
 
     teams: Mapped[list["EmployeeTeam"]] = relationship("EmployeeTeam", back_populates="employee")
 
+    lead_team: Mapped["Team"] = relationship(
+        "Team",
+        back_populates="teamlead",
+        uselist=False,
+        foreign_keys="Team.teamlead_id",
+    )
+
     __table_args__ = (
         CheckConstraint("salary >= 0", name="ck_employee_salary_positive"),
     )
@@ -45,6 +52,11 @@ class Team(IdIntPkMixin, Base):
 
     project: Mapped["Project"] = relationship("Project", back_populates="teams")
     members: Mapped[list["EmployeeTeam"]] = relationship("EmployeeTeam", back_populates="team")
+    teamlead: Mapped["Employee"] = relationship(
+        "Employee",
+        back_populates="lead_team",
+        foreign_keys=[teamlead_id],
+    )
 
 
 class EmployeeTeam(IdIntPkMixin, Base):
