@@ -26,7 +26,7 @@ class RepositoryBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         return await self.session.get(self.model, obj_id)
 
     async def create(self, data: CreateSchemaType) -> ModelType:
-        obj = self.model(data.model_dump())
+        obj = self.model(**data.model_dump())
         self.session.add(obj)
         await self.session.commit()
         await self.session.refresh(obj)
