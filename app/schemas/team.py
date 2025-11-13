@@ -9,8 +9,8 @@ class TeamBase(BaseModel):
         ...,
         max_length=NAME_MAX_LEN,
     )
-    project_id: int | None = Field(None)
-    teamlead_id: int | None = Field(None)
+    project_id: int | None = Field(None, gt=0)
+    teamlead_id: int | None = Field(None, gt=0)
 
 
 class TeamCreate(TeamBase):
