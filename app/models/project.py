@@ -1,4 +1,6 @@
+from __future__ import annotations
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 from sqlalchemy import DateTime, String, Text, func, CheckConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
@@ -6,6 +8,10 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
 from constants.project import NAME_MAX_LEN
 from models import Base
 from models.mixins.id_int_pk import IdIntPkMixin
+
+if TYPE_CHECKING:
+    from .employee import Team
+    from .order import Order
 
 
 class Project(IdIntPkMixin, Base):
