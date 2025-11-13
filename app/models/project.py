@@ -39,3 +39,6 @@ class Project(IdIntPkMixin, Base):
             if value < self.start_date:
                 raise ValueError("End date cannot be before start date")
         return value
+
+    def __str__(self) -> str:
+        return f"<Project: {self.name}>"
