@@ -1,5 +1,7 @@
+from __future__ import annotations
 from datetime import datetime
 from decimal import Decimal
+from typing import TYPE_CHECKING
 
 from sqlalchemy import DECIMAL, DateTime, String, ForeignKey, func, CheckConstraint, Enum, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
@@ -8,6 +10,9 @@ from constants.employee import GradeEnum, PositionEnum
 from constants.team import NAME_MAX_LEN
 from models import Person, Base
 from models.mixins.id_int_pk import IdIntPkMixin
+
+if TYPE_CHECKING:
+    from .project import Project
 
 
 class Employee(IdIntPkMixin, Person):
@@ -27,7 +32,7 @@ class Employee(IdIntPkMixin, Person):
     )
 
     @validates("salary")
-    def validate_salary(self, key: str, value: Decimal) -> Decimal: # noqa: F841
+    def validate_salary(self, key: str, value: Decimal) -> Decimal:  # noqa: F841
         if value < 0:
             raise ValueError("Salary must be positive")
         return value
