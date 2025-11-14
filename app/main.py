@@ -3,6 +3,7 @@ from typing import AsyncIterator
 
 import uvicorn
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from admin.core import init_admin
 from app.database import database
@@ -27,6 +28,14 @@ init_admin(main_app, database.engine)
 main_app.include_router(
     api_router,
     prefix=settings.api.prefix,
+)
+
+main_app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors.allow_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 if __name__ == "__main__":
