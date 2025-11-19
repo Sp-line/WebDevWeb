@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field, ConfigDict
 
-from constants.team import NAME_MAX_LEN
-from schemas.common import ProjectShort, PersonShort
+from app.constants.team import NAME_MAX_LEN
+from app.schemas.common import ProjectShort, PersonShort
 
 
 class TeamRelation(BaseModel):

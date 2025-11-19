@@ -1,7 +1,7 @@
 from sqladmin import ModelView
 
-from admin.core import register_admin
-from models import Order
+from app.admin.core import register_admin
+from app.models import Order
 
 
 @register_admin

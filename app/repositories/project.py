@@ -2,9 +2,9 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from models import Project
-from schemas.project import ProjectCreate, ProjectUpdate
-from .base import RepositoryBase
+from app.models import Project
+from app.repositories.base import RepositoryBase
+from app.schemas.project import ProjectCreate, ProjectUpdate
 
 
 class ProjectRepository(RepositoryBase[Project, ProjectCreate, ProjectUpdate]):

@@ -4,11 +4,11 @@ from typing import TYPE_CHECKING
 
 from sqlalchemy.orm import Mapped, relationship
 
-from models import Person
-from models.mixins.id_int_pk import IdIntPkMixin
+from app.models import Person
+from app.models.mixins.id_int_pk import IdIntPkMixin
 
 if TYPE_CHECKING:
-    from models.order import Order
+    from app.models.order import Order
 
 
 class Client(IdIntPkMixin, Person):

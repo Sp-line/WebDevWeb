@@ -4,12 +4,12 @@ from typing import TYPE_CHECKING
 
 from fastapi import HTTPException, status
 
-from repositories.employee import EmployeeRepository
-from repositories.project import ProjectRepository
-from repositories.team import TeamRepository
-from schemas.team import TeamListResponse, TeamCreate, TeamUpdate, TeamDetailResponse, \
+from app.repositories.employee import EmployeeRepository
+from app.repositories.project import ProjectRepository
+from app.repositories.team import TeamRepository
+from app.schemas.team import TeamListResponse, TeamCreate, TeamUpdate, TeamDetailResponse, \
     TeamCreateUpdateResponse, TeamRelation
-from utils.get_obj_or_404 import get_object_or_404
+from app.utils.get_obj_or_404 import get_object_or_404
 
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession

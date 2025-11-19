@@ -3,9 +3,9 @@ from datetime import datetime
 from pydantic import BaseModel, Field, field_validator, ConfigDict
 from pydantic_core.core_schema import FieldValidationInfo
 
-from constants.project import NAME_MAX_LEN, NAME_MIN_LEN
-from schemas.common import OrderShort, TeamShort
-from utils.utc_now import utc_now
+from app.constants.project import NAME_MAX_LEN, NAME_MIN_LEN
+from app.schemas.common import OrderShort, TeamShort
+from app.utils.utc_now import utc_now
 
 
 class ProjectBase(BaseModel):

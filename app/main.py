@@ -4,12 +4,12 @@ from typing import AsyncIterator
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
-from admin.core import init_admin
-from app.database import database
-from config import settings
-from routes import router as api_router
 from fastapi.responses import ORJSONResponse
+
+from app.admin.core import init_admin
+from app.config import settings
+from app.database import database
+from app.routes import router as api_router
 
 
 @asynccontextmanager

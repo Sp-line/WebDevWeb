@@ -4,9 +4,9 @@ from typing import TYPE_CHECKING
 
 from sqladmin import ModelView
 
-from admin.core import register_admin
-from models import Project
-from schemas.project import ProjectBase
+from app.admin.core import register_admin
+from app.models import Project
+from app.schemas.project import ProjectBase
 
 if TYPE_CHECKING:
     from typing import Any

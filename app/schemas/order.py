@@ -2,7 +2,7 @@ from decimal import Decimal
 
 from pydantic import BaseModel, Field
 
-from constants.order import TECHNICAL_TASK_MAX_LEN
+from app.constants.order import TECHNICAL_TASK_MAX_LEN
 
 
 class OrderBase(BaseModel):

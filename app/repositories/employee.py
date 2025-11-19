@@ -1,8 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from models import Employee
-from repositories.base import RepositoryBase
-from schemas.employee import EmployeeCreate, EmployeeUpdate
+from app.models import Employee
+from app.repositories.base import RepositoryBase
+from app.schemas.employee import EmployeeCreate, EmployeeUpdate
 
 
 class EmployeeRepository(RepositoryBase[Employee, EmployeeCreate, EmployeeUpdate]):

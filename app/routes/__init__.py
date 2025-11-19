@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from routes.team import team_router
+from app.routes.team import team_router
 
 router = APIRouter()
 

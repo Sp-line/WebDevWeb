@@ -1,7 +1,7 @@
-from .client import ClientAdmin
-from .employee import EmployeeAdmin
-from .order import OrderAdmin
-from .project import ProjectAdmin
-from .team import TeamAdmin
+from app.admin.client import ClientAdmin
+from app.admin.employee import EmployeeAdmin
+from app.admin.order import OrderAdmin
+from app.admin.project import ProjectAdmin
+from app.admin.team import TeamAdmin
 
 __all__ = ["ProjectAdmin", "ClientAdmin", "OrderAdmin", "EmployeeAdmin", "TeamAdmin"]

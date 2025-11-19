@@ -2,15 +2,15 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, status
 
-from dependencies.team import get_team_service
-from schemas.team import (
+from app.dependencies.team import get_team_service
+from app.schemas.team import (
     TeamCreate,
     TeamUpdate,
     TeamListResponse,
     TeamDetailResponse,
     TeamCreateUpdateResponse,
 )
-from services.team import TeamService
+from app.services.team import TeamService
 
 team_router = APIRouter(prefix="/teams", tags=["Teams"])
 

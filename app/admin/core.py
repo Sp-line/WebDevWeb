@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 from sqladmin import Admin
 
-from admin.registry import create_admin_registry
+from app.admin.registry import create_admin_registry
 
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncEngine

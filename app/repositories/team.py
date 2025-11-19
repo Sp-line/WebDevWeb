@@ -6,9 +6,9 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from models import Team, EmployeeTeam
-from repositories.base import RepositoryBase
-from schemas.team import TeamCreate, TeamUpdate
+from app.models import Team, EmployeeTeam
+from app.repositories.base import RepositoryBase
+from app.schemas.team import TeamCreate, TeamUpdate
 
 if TYPE_CHECKING:
     from typing import Sequence

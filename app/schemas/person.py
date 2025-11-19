@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field, EmailStr
 
-from constants.person import EMAIL_MAX_LEN, FIRST_NAME_MIN_LEN, FIRST_NAME_MAX_LEN, LAST_NAME_MIN_LEN, LAST_NAME_MAX_LEN
+from app.constants.person import EMAIL_MAX_LEN, FIRST_NAME_MIN_LEN, FIRST_NAME_MAX_LEN, LAST_NAME_MIN_LEN, \
+    LAST_NAME_MAX_LEN
 
 
 class PersonBase(BaseModel):

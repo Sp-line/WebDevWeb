@@ -1,17 +1,18 @@
 from __future__ import annotations
+
 from datetime import datetime
 from typing import TYPE_CHECKING
 
 from sqlalchemy import ForeignKey, DECIMAL, DateTime, func, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
 
-from constants.order import TECHNICAL_TASK_MAX_LEN
-from models import Base
-from models.mixins.id_int_pk import IdIntPkMixin
+from app.constants.order import TECHNICAL_TASK_MAX_LEN
+from app.models import Base
+from app.models.mixins.id_int_pk import IdIntPkMixin
 
 if TYPE_CHECKING:
-    from .client import Client
-    from .project import Project
+    from app.models.client import Client
+    from app.models.project import Project
 
 
 class Order(IdIntPkMixin, Base):
@@ -25,7 +26,7 @@ class Order(IdIntPkMixin, Base):
     project: Mapped["Project"] = relationship("Project", back_populates="order", uselist=False)
 
     @validates("created")
-    def validate_created(self, key: str, value: datetime) -> datetime: # noqa: F841
+    def validate_created(self, key: str, value: datetime) -> datetime:  # noqa: F841
         if getattr(self, "created", None) is not None:
             raise ValueError("created field cannot be modified")
         return value

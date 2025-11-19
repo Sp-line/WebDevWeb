@@ -1,10 +1,10 @@
 from typing import Generic, TypeVar, Type, Sequence
 
 from pydantic import BaseModel
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from models.mixins.id_int_pk import IdIntPkMixin
+from app.models.mixins.id_int_pk import IdIntPkMixin
 
 ModelType = TypeVar("ModelType", bound=IdIntPkMixin)
 

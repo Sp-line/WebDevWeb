@@ -1,7 +1,7 @@
 from sqladmin import ModelView
 
-from admin.core import register_admin
-from models import Team
+from app.admin.core import register_admin
+from app.models import Team
 
 
 @register_admin

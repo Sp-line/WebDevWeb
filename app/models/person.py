@@ -1,8 +1,8 @@
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from constants.person import FIRST_NAME_MAX_LEN, LAST_NAME_MAX_LEN, EMAIL_MAX_LEN
-from models import Base
+from app.constants.person import FIRST_NAME_MAX_LEN, LAST_NAME_MAX_LEN, EMAIL_MAX_LEN
+from app.models import Base
 
 
 class Person(Base):

@@ -3,9 +3,10 @@ from decimal import Decimal
 
 from pydantic import Field, BaseModel, ConfigDict, EmailStr
 
-from constants.employee import GradeEnum, PositionEnum
-from constants.person import EMAIL_MAX_LEN, FIRST_NAME_MIN_LEN, FIRST_NAME_MAX_LEN, LAST_NAME_MIN_LEN, LAST_NAME_MAX_LEN
-from schemas.person import PersonBase
+from app.constants.employee import GradeEnum, PositionEnum
+from app.constants.person import EMAIL_MAX_LEN, FIRST_NAME_MIN_LEN, FIRST_NAME_MAX_LEN, LAST_NAME_MIN_LEN, \
+    LAST_NAME_MAX_LEN
+from app.schemas.person import PersonBase
 
 
 class EmployeeBase(PersonBase):
