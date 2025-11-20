@@ -9,7 +9,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship, validates
 
 from app.constants.employee import GradeEnum, PositionEnum
 from app.constants.team import NAME_MAX_LEN
-from app.models import Person, Base
+from .person import Person
+from .base import Base
 from app.models.mixins.id_int_pk import IdIntPkMixin
 
 if TYPE_CHECKING:

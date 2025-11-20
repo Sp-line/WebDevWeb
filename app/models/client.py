@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 from sqlalchemy.orm import Mapped, relationship
 
-from app.models import Person
+from .person import Person
 from app.models.mixins.id_int_pk import IdIntPkMixin
 
 if TYPE_CHECKING:
