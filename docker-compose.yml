@@ -3,20 +3,37 @@ version: "3.9"
 services:
   web:
     build: .
-    container_name: web_dev_web
+    container_name: web_dev_web_app
+    command: uvicorn app.main:main_app --host 0.0.0.0 --port 8000 --reload
     ports:
-      - "8000:8000"
+      - "8001:8000"
     env_file:
       - ./app/.env
+    environment:
+      APP_CONFIG__DB__URL: postgresql+asyncpg://${POSTGRES_USER:-web_user}:${POSTGRES_PASSWORD:-web_password}@pg:5432/${POSTGRES_DB:-web_database}
     volumes:
       - .:/app
     restart: unless-stopped
+    depends_on:
+      pg:
+        condition: service_healthy
 
   pg:
-    image: postgres
+    image: postgres:15-alpine
+    container_name: web_dev_web_db
     environment:
-      POSTGRES_DB: web_database
-      POSTGRES_USER: web_user
-      POSTGRES_PASSWORD: web_password
+      POSTGRES_DB: ${POSTGRES_DB:-web_database}
+      POSTGRES_USER: ${POSTGRES_USER:-web_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-web_password}
     ports:
-      - "5432:5432"
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-web_user} -d ${POSTGRES_DB:-web_database}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
