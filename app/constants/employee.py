@@ -1,14 +1,14 @@
 import enum
 
 
-class GradeEnum(str, enum.Enum):
+class GradeEnum(enum.StrEnum):
     Junior = "Junior"
     Middle = "Middle"
     Senior = "Senior"
     Lead = "Lead"
 
 
-class PositionEnum(str, enum.Enum):
+class PositionEnum(enum.StrEnum):
     Frontend = "Frontend Developer"
     Backend = "Backend Developer"
     Fullstack = "Fullstack Developer"
